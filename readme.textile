@@ -1,4 +1,4 @@
-h1. SomaticSniper
+h1. SomaticZ
 
 p. A somatic SNV caller which using Copy Number info.
 
