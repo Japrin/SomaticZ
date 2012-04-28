@@ -1,0 +1,24 @@
+h1. SomaticSniper
+
+p. A somatic SNV caller which using Copy Number info.
+
+h2. Build Dependencies
+
+* samtools 0.1.6 ("sourceforge download page":http://sourceforge.net/projects/samtools/files/samtools/0.1.6/)
+
+
+h2. Build Instructions
+
+h3. Build Samtools
+
+h3. Compile SomaticSniper
+
+* change the variable `SAMTOOLS_DIR` in makefile to your path of samtools-0.1.6, then
+
+bc..         make
+
+h2. FAQ
+
+h2. User Support
+
+p. Please feel free to cantact me: tao2013@gmail.com.
