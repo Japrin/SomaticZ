@@ -117,6 +117,7 @@ void likelihood_aux::collect_baseInfo(int n, const bam_pileup1_t *pl, uint8_t re
 		if(isSkip) continue;
 
 		q = (uint32_t)bam1_qual(p->b)[p->qpos];
+		if(int(q) < d->baseQ) continue;
 		x |= (uint32_t)bam1_strand(p->b) << 18 | q << 8 | p->b->core.qual;
 		if (p->b->core.qual < q) q = p->b->core.qual;
 		x |= q << 24;

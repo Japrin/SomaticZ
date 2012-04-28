@@ -64,6 +64,7 @@ void usage(const char* progname) {
     fprintf(stderr, "        -a INT    cnv file 1 (for tumor)\n");
     fprintf(stderr, "        -b INT    cnv file 2 (for normal)\n");
     fprintf(stderr, "        -c INT    minimum depth required (for both tumor and normal) [10]\n");
+    fprintf(stderr, "        -p INT    only bases with quality not less than INT were used for calling [15]\n");
     fprintf(stderr, "        -q INT    filtering reads with mapping quality less than INT [1]\n");
     fprintf(stderr, "        -Q INT    filtering somatic snv output with somatic quality less than  INT [1]\n");
     fprintf(stderr, "        -u INT    tumor purity [1.00]\n");
@@ -76,6 +77,7 @@ int main(int argc, char * argv[]) {
 	pileup_aux *d = new pileup_aux();
 	d->tid = -1;
 	d->mask = BAM_DEF_MASK;
+	d->baseQ = 15;
 	d->mapQ = 1;
 	d->min_depth = 10;
 	d->min_somatic_qual = 1;
@@ -83,9 +85,10 @@ int main(int argc, char * argv[]) {
 	d->covered_len = 0;
 
 	int c;
-	while ((c = getopt(argc, argv, "f:q:Q:a:b:c:u:v:")) >= 0) {
+	while ((c = getopt(argc, argv, "f:p:q:Q:a:b:c:u:v:")) >= 0) {
 		switch (c) {
 			case 'f': fn_fa = optarg; break;
+			case 'p': d->baseQ = atoi(optarg);break;
 			case 'q': d->mapQ = atoi(optarg);break;
 			case 'Q': d->min_somatic_qual = atoi(optarg); break;
 			case 'a': d->cnv_h1 = new CNV_aux(optarg); break;

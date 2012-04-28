@@ -66,6 +66,7 @@ public:
     int tid, len, last_pos;
     int mask;
     int mapQ;
+    int baseQ;
     int min_somatic_qual;
     char *ref;
     //copy number file: cnv_fh1 for tumor, cnv_fh2 for normal
